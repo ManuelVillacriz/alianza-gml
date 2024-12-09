@@ -1,0 +1,104 @@
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+/.vscode/
+
+# Directorios de compilación y archivos generados
+target/
+build/
+bin/
+*.class
+*.jar
+*.war
+*.ear
+*.log
+
+# Dependencias y archivos de caché
+/.mvn/
+maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.properties
+Gradle files/
+.gradle/
+build/
+.gradle/
+.gradle/
+
+# Archivos de configuración específicos para ciertos IDEs o sistemas
+*.settings/
+*.project
+*.classpath
+
+# Archivos de registros y volcados de datos
+*.log
+*.csv
+*.sql
+*.dump
+
+# Archivos temporales o de respaldo
+*~
+*.bak
+*.swp
+*.tmp
+
+# Archivos de salida de pruebas y cobertura
+/target/
+/.classpath
+/.project
+/.settings/
+*.iml
+*.log
+*.metadata
+bin/
+*.dat
+*.tmp
+*.trs
+*.dll
+*.class
+*.war
+*.ear
+*.jar
+*.zip
+*.tar.gz
+*.rar
+*.tgz
+*.sql
+*.pdf
+*.war.zip
+*.jar.zip
+*.tar
+*.gz
+*.csv
+*.xls
+*.xlsx
+*.db
+*.sqlite
+*.db-journal
+*.tar.bz2
+
+
+# Directorio de dependencias de Node.js
+node_modules/
+
+# Directorio generado por el comando `ng build`
+/dist/
+
+# Archivos de configuración local
+.env
+*.env
+.env.*
+
+# Archivos de respaldo o temporales
+*.log
+*.swp
+*.tmp
+
+# Archivos de salida del IDE
+.idea/
+.vscode/
+*.iml
+/tipificador-documentos-backend/.metadata/.plugins
+/tipificador-documentos-backend/.metadata/.lock
+/tipificador-documentos-backend/.metadata/.log
+/tipificador-documentos-backend/.metadata/version.ini

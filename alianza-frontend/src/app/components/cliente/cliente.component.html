@@ -1,0 +1,106 @@
+<div class="card text-bg-light mb-3">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card text-bg-light mb-3">
+        <div class="card-body">
+
+           
+
+            <div class="form-group">
+                <div class="d-flex gap-2"> <!-- 'd-flex' para flexbox y 'gap-2' para definir espacio entre botones -->
+                  <button class="btn btn-primary" routerLink="/clientes/form">
+                    <mat-icon>add</mat-icon>
+                    New
+                  </button>
+                  <button class="btn btn-success" (click)="downloadCSV()">
+                    <mat-icon>download</mat-icon>
+                    Export
+                  </button>
+                </div>
+              </div>
+              
+
+            <table mat-table [dataSource]="dataSource" style="width: 75%;" class="table table-hover table-striped">
+                
+                <ng-container matColumnDef="sharedKey">
+                    <th mat-header-cell *matHeaderCellDef>
+                      <div style="display: flex; flex-direction: column;">
+                        <span>Shared Key</span>
+                        <input matInput (input)="filter($event, 'filterSharedKey')" placeholder="Filter by Shared Key" />
+                      </div>
+                    </th>
+                    <td mat-cell *matCellDef="let cliente"> {{ cliente.sharedKey }} </td>
+                  </ng-container>
+                
+                  <!-- Name Column -->
+                  <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef>
+                      <div style="display: flex; flex-direction: column;">
+                        <span>Name</span>
+                        <input matInput (input)="filter($event, 'filterName')" placeholder="Filter by Name" />
+                      </div>
+                    </th>
+                    <td mat-cell *matCellDef="let cliente"> {{ cliente.name }} </td>
+                  </ng-container>
+                
+                  <!-- Last Name Column -->
+                  <ng-container matColumnDef="lastName">
+                    <th mat-header-cell *matHeaderCellDef>
+                      <div style="display: flex; flex-direction: column;">
+                        <span>Last Name</span>
+                        <input matInput (input)="filter($event, 'filterLastName')" placeholder="Filter by Last Name" />
+                      </div>
+                    </th>
+                    <td mat-cell *matCellDef="let cliente"> {{ cliente.lastName }} </td>
+                  </ng-container>
+                
+                  <!-- Email Column -->
+                  <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef>
+                      <div style="display: flex; flex-direction: column;">
+                        <span>Email</span>
+                        <input matInput (input)="filter($event, 'filterEmail')" placeholder="Filter by Email" />
+                      </div>
+                    </th>
+                    <td mat-cell *matCellDef="let cliente"> {{ cliente.email }} </td>
+                  </ng-container>
+                
+                  <!-- Phone Column -->
+                  <ng-container matColumnDef="phone">
+                    <th mat-header-cell *matHeaderCellDef>
+                      <div style="display: flex; flex-direction: column;">
+                        <span>Phone</span>
+                        <input matInput (input)="filter($event, 'filterPhone')" placeholder="Filter by Phone" />
+                      </div>
+                    </th>
+                    <td mat-cell *matCellDef="let cliente"> {{ cliente.phone }} </td>
+                  </ng-container>
+
+                <ng-container matColumnDef="dataAdded">
+                    <th mat-header-cell *matHeaderCellDef> Data Added </th>
+                    <td mat-cell *matCellDef="let cliente">   {{ cliente.dataAdded | date: 'short' }} </td>
+                </ng-container>
+                
+
+                <ng-container matColumnDef="acciones" >
+                    <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                    <td mat-cell *matCellDef="let cliente" >
+                        <button mat-button color="primary" [routerLink]="['/clientes/form', cliente.id]">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-button color="warn" (click)="eliminar(cliente)" >
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="mostrarColumnas"></tr>
+                <tr mat-row *matRowDef="let cliente; columns: mostrarColumnas;"></tr>
+            </table>
+            <div class="alert alert-info" *ngIf="lista?.length==0"> No hay documentos en el sistema</div>
+            <mat-paginator [pageSizeOptions]="pageSizeOptions" [length]="totalRegistros" [pageIndex]="paginaActual"
+                [pageSize]="totalPorPagina" showFirstLastButtons class="float-end mx-2" (page)="paginar($event)"
+                aria-label="Select page">
+            </mat-paginator>
+        </div>
+    </div>
+</div>

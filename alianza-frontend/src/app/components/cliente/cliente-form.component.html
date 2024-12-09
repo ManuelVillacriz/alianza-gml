@@ -1,0 +1,81 @@
+<div class="card text-bg-light mb-3">
+    <div class="card-header">{{titulo}}</div>
+    <div class="card-body">
+      <button class="btn btn-secondary my-2" routerLink="/clientes">
+        <mat-icon>arrow_back</mat-icon>  
+        Return        
+      </button>
+  
+      <form>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-md-2">
+              <label for="name">Name</label>
+              <input type="text" name="name" class="form-control" [(ngModel)]="model.name" id="name" #nameField="ngModel" pattern="[a-zA-Z]+" >
+              <div class="alert alert-danger" *ngIf="nameField.invalid && nameField.touched">                
+                <span *ngIf="nameField.errors?.pattern">Solo se permiten letras (a-z, A-Z).</span>
+              </div>
+              <div class="alert alert-danger" *ngIf="error && error.name">{{ error.name }}</div>
+            </div>
+            
+            <div class="col-md-2">
+              <label for="lastName">Last Name</label>
+              <input type="text" name="lastName" class="form-control" [(ngModel)]="model.lastName" id="lastName" #nameField="ngModel" pattern="[a-zA-Z]+" >
+              <div class="alert alert-danger" *ngIf="nameField.invalid && nameField.touched">                
+                <span *ngIf="nameField.errors?.pattern">Solo se permiten letras (a-z, A-Z).</span>
+              </div>
+              <div class="alert alert-danger" *ngIf="error && error.lastName">{{ error.lastName }}</div>
+            </div>
+
+            <div class="col-md-4">
+              <label for="email">E-Mail</label>
+              <input type="text" name="email" class="form-control" [(ngModel)]="model.email" id="email" [disabled]="model.id" #nameField="ngModel" required>
+              <div class="alert alert-danger" *ngIf="nameField.invalid && nameField.touched">
+                <span *ngIf="nameField.errors?.required">El campo es obligatorio.</span>                
+              </div>
+              <div class="alert alert-danger" *ngIf="error && error.email">{{ error.email }}</div>
+            </div>
+
+            <div class="col-md-2">
+              <label for="phone">phone</label>
+              <input type="text" name="phone" class="form-control" [(ngModel)]="model.phone" id="phone">
+              <div class="alert alert-danger" *ngIf="error && error.phone">{{ error.phone }}</div>
+            </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-md-2">
+              <label for="startDate">Start Date</label>
+              <input type="date" name="startDate" class="form-control" [(ngModel)]="model.startDate" id="startDate">
+              <div class="alert alert-danger" *ngIf="error && error.startDate">{{ error.startDate }}</div>
+            </div>
+
+            <div class="col-md-2">
+              <label for="endDate">End Date</label>
+              <input type="date" name="endDate" class="form-control" [(ngModel)]="model.endDate" id="endDate">
+              <div class="alert alert-danger" *ngIf="error && error.endDate">{{ error.endDate }}</div>
+            </div>
+
+            <div class="col-md-2" *ngIf="model.id">
+              <label for="estado">Estado</label>
+              <select name="estado" class="form-control" [(ngModel)]="model.estado" id="estado">
+                <option [value]="true">Activo</option>
+                <option [value]="false">Inactivo</option>
+              </select>
+            </div>
+
+          </div>
+
+        </div>
+  
+        <br />
+        <div class="form-group">
+          <button type="button" class="btn btn-primary" (click)="model.id? editar(): crear()">
+            <mat-icon>save</mat-icon>
+            {{ model.id? 'Edit': 'Save'}}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>

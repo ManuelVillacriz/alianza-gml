@@ -1,0 +1,25 @@
+.card {
+    margin-top: 10px;
+}
+
+.btn {
+    display: inline-flex; /* Usar Flexbox */
+    align-items: center; /* Alinear verticalmente el icono y texto */
+    justify-content: center;
+    gap: 4px; /* Espacio entre el icono y el texto */
+    padding: 8px 12px; /* Espaciado interno */
+    border: none;
+    background-color: #007bff; /* Color personalizado si es necesario */
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .btn .icon {
+    display: inline-block;
+    font-size: 18px; /* Ajustar tamaño del ícono */
+  }
+  
+  .btn .button-text {
+    font-size: 14px; /* Ajustar tamaño de texto si es necesario */
+  }
